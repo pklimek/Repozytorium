@@ -1,0 +1,40 @@
+
+void newNode(book *root)
+{
+    if(root!=NULL)
+    {
+        book *nowy, *ptr;
+        int comp;
+        nowy=(book*)malloc(sizeof(book));
+        if(nowy==NULL)
+        {
+            printf("BLAD ALOKACJI!\n\n");
+        }
+        else
+        {
+            nowy->data=daneInput();
+            nowy->left=NULL;
+            nowy->right=NULL;
+            ptr=root;
+            comp=strcmp(nowy->data.nazwisko,ptr->data.nazwisko);
+            while((comp>0 || ptr->left!=NULL) && (comp<=0 || ptr->right!=NULL))
+            {
+                if(comp>0)
+                    ptr=ptr->right;
+                else
+                    ptr=ptr->left;
+
+                comp=strcmp(nowy->data.nazwisko,ptr->data.nazwisko);
+            }
+            if(comp>0)
+                ptr->right=nowy;
+            else
+                ptr->left=nowy;
+
+            nowy->parent=ptr;
+
+        }
+    }
+    else
+        printf("BLAD!\n\n");
+}

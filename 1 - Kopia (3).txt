@@ -1,0 +1,41 @@
+void displayInOrder(book *root)
+{
+    if(root->left!=NULL)
+        displayInOrder(root->left);
+
+    printf("%s %s - %d\n",root->data.nazwisko,root->data.imie,root->data.num);
+
+    if(root->right!=NULL)
+        displayInOrder(root->right);
+
+}
+
+book* first(book *root)
+{
+    if(root->left!=NULL)
+        return first(root->left);
+    else
+        return root;
+}
+
+book* last(book *root)
+{
+    if(root->right!=NULL)
+        return last(root->right);
+    else
+        return root;
+}
+
+int howMuch(book *root)
+{
+    int n;
+    n=0;
+    if(root->left!=NULL)
+        n+=howMuch(root->left);
+    n++;
+
+    if(root->right!=NULL)
+        n+=howMuch(root->right);
+
+    return n;
+}
