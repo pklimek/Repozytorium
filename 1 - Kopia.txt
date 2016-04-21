@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "funkcje.h"
+
+
+rekord daneInput()
+{
+      rekord obiekt;
+      printf("Imie: ");
+      scanf("%s",obiekt.imie);
+      printf("Nazwisko: ");
+      scanf("%s",obiekt.nazwisko);
+      printf("Numer telefonu: ");
+      scanf("%d",&(obiekt.num));
+      printf("\n");
+
+      return obiekt;
+}
+
+book* createRoot()
+{
+    book *root;
+    root=(book*)malloc(sizeof(book));
+    if(root!=NULL)
+    {
+        root->data=daneInput();
+        root->left=NULL;
+        root->right=NULL;
+        root->parent=NULL;
+        return root;
+    }
+    else
+    {
+        printf("BLAD ALOKACJI!\n\n");
+        return NULL;
+    }
+}
