@@ -1,0 +1,46 @@
+book* findOne(book *root)
+{
+    book *ptr;
+    int comp;
+    char name[ROZMIAR];
+    printf("Podaj nazwisko, ktore chcesz znalezc: ");
+    scanf("%s",name);
+
+    ptr=root;
+    comp=strcmp(name,ptr->data.nazwisko);
+    while(comp!=0)
+    {
+        if(comp>0)
+            ptr=ptr->right;
+        else
+            ptr=ptr->left;
+        if(ptr==NULL)
+            return NULL;
+        comp=strcmp(name,ptr->data.nazwisko);
+    }
+    return ptr;
+}
+
+int howHigh(book *root)
+{
+    int h1,h2;
+    if(root->left==NULL)
+        h1=0;
+    else
+        h1=howHigh(root->left);
+    if(root->right==NULL)
+        h2=0;
+    else
+        h2=howHigh(root->right);
+    return (h1>h2?h1+1:h2+1);
+}
+
+void interface(book *root)
+{
+    int option;
+    book *tmp;
+    do
+    {
+        printf("1 - DODAJ WPIS DO KSIAZKI\n2 - WYSWIETL KSIAZKE TELEFONICZNA (ALFABETYCZNIE)\n3 - POKAZ PIERWSZA WARTOSC (ALFABETYCZNIE)\n4 - POKAZ OSTATNIA WARTOSC (ALFABETYCZNIE)\n5 - POKAZ ILE POZYCJI\n6 - POKAZ ILE POZIOMOW DRZEWA BST\n7 - ZNAJDZ WPIS PO NAZWISKU\n0 - WYJSCIE\n\n");
+        scanf("%d", &option);
+        switch(option)
