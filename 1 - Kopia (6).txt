@@ -1,0 +1,41 @@
+ifndef FUNKCJE_H
+#define FUNKCJE_H
+
+#define ROZMIAR 32
+
+typedef struct dane
+{
+    char imie[ROZMIAR];
+    char nazwisko[ROZMIAR];
+    int num;
+} rekord;
+
+typedef struct bst
+{
+    rekord data;
+    struct bst *left;
+    struct bst *right;
+    struct bst *parent;
+} book;
+
+rekord daneInput();
+
+book* createRoot();
+
+void newNode(book *root);
+
+void displayInOrder(book *root);
+
+book* first(book *root);
+
+book* last(book *root);
+
+int howMuch(book *root);
+
+book* findOne(book *root);
+
+int howHigh(book *root);
+
+void interface(book *root);
+
+#endif
