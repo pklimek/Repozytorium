@@ -31,7 +31,7 @@ void newNode(book *root)
             else
                 ptr->left=nowy;
 
-            nowy->parent=ptr;
+            nowy->parent=ptr; cos nie dziala
 
         }
     }
