@@ -3,7 +3,7 @@
 #include <string.h>
 #include "funkcje.h"
 
-
+cos jest nie tak
 
 rekord daneInput()
 {
